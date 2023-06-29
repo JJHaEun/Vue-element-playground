@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const div = document.querySelector("#app");
+      //   console.log((div.innerHTML = "Hello Word"));
+      // 대부분의 값들은 위처럼 바로 들어가지 않고 , 변수에 담겨있으며
+      // 변수를 연결해 화면에 표현 ==> 변수에 담고, 이것을 화면에 표시하고 다시 데이터를 변경한 경우 -->>
+      let str = "Hello Word";
+      div.innerHTML = str;
+      str = "Hi Mac!!";
+      // 바뀐 데이터 내용이 화면에 반영되지 않음.
+      // 다시 해당 태그 정보를 들고와 변경된 내용을 넣어 보여주어야함.
+      div.innerHTML = str;
+    </script>
+  </body>
+</html>
