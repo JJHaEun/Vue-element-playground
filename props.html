@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <app-header v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터 이름"></app-header> -->
+      <app-header :propsdata="msg"></app-header>
+      <!-- <app-header v-bind:propsdata="msg"></app-header> -->
+      <!--  위, 아래 동일한 방법. 위의 방법을 더 권장 -->
+
+      <!-- props속성 이름은 app-header의 내용에 정의 하면 됨. -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const appHeader = {
+        template: "<h1>header</h1>",
+        // 여기에 props속성 이름 정의
+        props: ["propsdata"],
+      };
+
+      new Vue({
+        el: "#app",
+        components: {
+          "app-header": appHeader,
+        },
+        data: {
+          msg: "Hi",
+        },
+      });
+    </script>
+  </body>
+</html>
