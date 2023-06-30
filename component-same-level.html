@@ -1,0 +1,51 @@
+<!-- 같은 위치의 컴포넌트끼리 데이터 주고받기 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <app-header :sendProps="num"></app-header>
+
+      <!-- 상위로 이벤트 넘기기 -->
+      <app-content @pass="deliverNum"></app-content>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const appHeader = {
+        template: "<div>header</div>",
+        props: ["sendProps"],
+      };
+
+      const appContent = {
+        template: "<div>content<button @click='passNum'>pass</button></div>",
+        methods: {
+          passNum() {
+            this.$emit("pass", 10); // pass 넘어오면서 10이라는 인자도 상위로 넘어옴
+          },
+        },
+      };
+
+      new Vue({
+        el: "#app",
+        components: {
+          "app-header": appHeader,
+          "app-content": appContent,
+        },
+        data: {
+          num: 0,
+        },
+        methods: {
+          deliverNum(value) {
+            // 암묵적으로 넘어온 인자를 value로 받기
+            this.num = value; // num에 담기 /// 넘어온 데이터 header에 전달!!
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
