@@ -6,15 +6,45 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="app">
+      <!-- url에 따라 뿌려지는 영역 -->
+      <router-view></router-view>
+    </div>
     <!-- 순서 중요!! 먼저 vue를 받아야함! -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- vue2 에 맞는 vue-router받음 -->
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
     <script>
+      const LoginComponent = {
+        template: "<div>login</div>",
+      };
+
+      const MainComponent = {
+        template: "<div>main</div>",
+      };
       //뷰와  라우터 인스턴스 만들기
-      new VueRouter({});
+      const router = new VueRouter({
+        // 페이지의 라우팅 정보 들어가는 속성(어떤 url로 이동했을때 어떤 페이지에 대한 정보가 담기는지
+        // => 배열로 들어감.)
+        // 배열안에 페이지 개수만큼 객체가 들어가게됨.
+        routes: [
+          {
+            // 페이지의 url이름
+            path: "/login",
+
+            // 해당 url에서 표시될 컴포넌트
+            component: LoginComponent,
+          },
+          {
+            path: "/main",
+            component: MainComponent,
+          },
+        ],
+      });
 
       new Vue({
         el: "#app",
+        router,
       });
     </script>
   </body>
