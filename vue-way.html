@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const div = document.querySelector("#app");
+      div.innerHTML = "Hello Word!!";
+      const viewModel = {};
+
+      // 즉시 실행되는 함수 만들기 // ==> 정의되자마자 즉시 실행되는 함수
+      (function () {
+        function init() {
+          Object.defineProperty(viewModel, "str", {
+            // 속성에 접근했을때 동작을 정의
+            get: function () {
+              // viewModel.str에 접근했을때
+              console.log("접근");
+            },
+
+            // 속성에 값을 할당했을 때의 동작을 정릐
+            set: function (newModel) {
+              // viewModel.str에 값을 할당했을때
+              console.log("할당", newModel);
+              render(newModel);
+            },
+          });
+        }
+
+        function render(newValue) {
+          div.innerHTML = newValue; // 값이 바뀔때 마다 화면이바뀔것
+        }
+
+        init();
+      })();
+    </script>
+  </body>
+</html>
