@@ -13,22 +13,30 @@
       <!--  위, 아래 동일한 방법. 위의 방법을 더 권장 -->
 
       <!-- props속성 이름은 app-header의 내용에 정의 하면 됨. -->
+
+      <app-content :propsdata="num"></app-content>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
       const appHeader = {
-        template: "<h1>header</h1>",
+        template: "<h1>{{ propsdata }}</h1>",
         // 여기에 props속성 이름 정의
         props: ["propsdata"],
       };
 
+      const appContent = {
+        template: "<div>{{ propsdata }}</div>",
+        props: ["propsdata"],
+      };
       new Vue({
         el: "#app",
         components: {
           "app-header": appHeader,
+          "app-content": appContent,
         },
         data: {
           msg: "Hi",
+          num: 10,
         },
       });
     </script>
