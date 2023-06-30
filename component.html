@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--  인스턴스 영역  -->
+      <app-header>
+        <!--  아래에서 정의한 app-header라는 컴포넌트 태그가 되고  이 부분에서 컴포넌트에 적용한 내용이 반영되어 화면에 나타난다.-->
+      </app-header>
+      <app-content />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // Vue 컴포넌트 생성하기
+      // Vue.component('컴포넌트 이름', {
+      //   // 컴포넌트 내용
+      // });
+
+      // 전역 컴포넌트 => 쉽게 컴포넌트 이름에 접근 가능
+      Vue.component("app-header", {
+        template: "<h1>Header</h1>", // template라는 속성을 이용해 h1태그를 만듬.
+      });
+      Vue.component("app-content", {
+        template: "<div>contents</div>",
+      });
+      new Vue({
+        el: "#app", // div 라고 태그를 적어주어도 되지만 고유한것을 넣어주어야함. // 인스턴스 영역 지정!
+      });
+      //   인스턴스를 생성시 그건 기본적으로 Root컴포넌트가 됨!
+    </script>
+  </body>
+</html>
