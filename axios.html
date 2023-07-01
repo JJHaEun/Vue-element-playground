@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+</head>
+<body>
+    <div id="app">
+
+        <button @click="getData">get user</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>   
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                users:[]
+            },
+            methods: {
+                async getData(){
+                    console.log(this) // 여기의 this는 바로 data를 가리킴
+                    // 따라서 여기 this를 변수에 담고, 그 변수를 바인딩 해주면 바로 data를 사용 가능
+                    const vm = this // this연결하기
+                   const result = await axios.get('https://jsonplaceholder.typicode.com/users')
+            console.log(result.data,"result")
+                axios.get('https://jsonplaceholder.typicode.com/users').then((response)=>{
+                    console.log(this) // 여기의 this와 위의 this와는 다름.
+
+                // console.log(response.data)
+                vm.users = response.data
+                    }).catch((error)=>{
+                    console.log(error)
+            })
+
+                }
+            },
+        })
+    </script>
+</body>
+</html>
