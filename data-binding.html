@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-bind:id="uuid" :class="name">{{num}}</p>
+      <p>{{doubleNum}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          num: 10,
+          uuid: "1234555",
+          name: "text-blue",
+        },
+        computed: {
+          doubleNum() {
+            return this.num * 2;
+            // num이 바뀌게되면 얘도 같이 계산되어 바뀌게됨
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
