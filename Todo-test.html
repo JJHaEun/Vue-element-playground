@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Todo: 인풋 박스를 만들고 입력된 값을 p태그에 출력해 보세요 -->
+      <p>{{ message }}</p>
+      <input v-model="message" placeholder="내용을 작성하세요" />
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          message: "",
+        },
+      });
+    </script>
+  </body>
+</html>
