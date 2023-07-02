@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <buttons-component @increase="countUp"></buttons-component>
+      <p>{{num}}</p>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          num: 10,
+        },
+        watch: {
+          num() {
+            this.logText();
+          },
+        },
+        methods: {
+          countUp() {
+            this.num++;
+          },
+          logText() {
+            console.log("changed");
+          },
+        },
+        components: {
+          "buttons-component": {
+            template: "<button @click='addNum'>Up</button>",
+            methods: {
+              addNum() {
+                this.$emit("increase");
+              },
+            },
+          },
+        },
+        //num 이 바뀔때마다 console.log등을 찍고 싶을때 사용할 수 있는 속성 : watch!
+        // watch라는 속성은 기본적으로 data를 넣을 수 있고, data의 변화에 따라서 특정로직 실행이 가능하다.
+      });
+    </script>
+  </body>
+</html>
