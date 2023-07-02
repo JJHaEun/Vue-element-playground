@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .warning {
+        color: red;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 조건에 따라 class사용하거나 안넣거나 할 수 있음. -->
+      <!-- warning이라는 class이름이 뒤의 조건에 따라서 들어가거나 아니거나 함.-->
+      <!--<p :class="{warning:isError}">Hello</p>-->
+      <p :class="errorTextColor">Hello</p>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          isError: false,
+        },
+        computed: {
+          errorTextColor() {
+            return this.isError ? "warning" : null;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
